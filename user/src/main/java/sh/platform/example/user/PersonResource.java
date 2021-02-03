@@ -18,42 +18,42 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 import java.util.Optional;
 
-@Path("users")
+@Path("people")
 @ApplicationScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class UserResource {
+public class PersonResource {
 
     @GET
-    public List<User> get() {
-        return User.listAll(Sort.ascending("name"));
+    public List<Person> get() {
+        return Person.listAll(Sort.ascending("name"));
     }
 
     @GET
     @Path("{id}")
-    public User getSingle(@PathParam Long id) {
+    public Person getSingle(@PathParam Long id) {
 
-        Optional<User> entity = User.findByIdOptional(id);
+        Optional<Person> entity = Person.findByIdOptional(id);
         return entity.orElseThrow(() -> new WebApplicationException("Car with id of " + id + " does not exist.",
                 Response.Status.NOT_FOUND));
     }
 
     @POST
     @Transactional
-    public Response create(User user) {
-        user.persist();
-        return Response.ok(user).status(201).build();
+    public Response create(Person person) {
+        person.persist();
+        return Response.ok(person).status(201).build();
     }
 
     @PUT
     @Path("{id}")
     @Transactional
-    public User update(@PathParam Long id, User user) {
+    public Person update(@PathParam Long id, Person person) {
 
-        User entity = User.<User>findByIdOptional(id)
+        Person entity = Person.<Person>findByIdOptional(id)
                 .orElseThrow(() -> new WebApplicationException("Car with id of " + id + " does not exist.",
                         Response.Status.NOT_FOUND));
-        entity.update(user);
+        entity.update(person);
         entity.flush();
         return entity;
     }
@@ -62,7 +62,7 @@ public class UserResource {
     @Path("{id}")
     @Transactional
     public Response delete(@PathParam Long id) {
-        boolean deleted = User.deleteById(id);
+        boolean deleted = Person.deleteById(id);
         if (deleted) {
             return Response.status(Response.Status.NO_CONTENT).build();
         }

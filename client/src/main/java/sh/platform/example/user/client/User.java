@@ -1,9 +1,12 @@
 package sh.platform.example.user.client;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class User {
 
     private String id;

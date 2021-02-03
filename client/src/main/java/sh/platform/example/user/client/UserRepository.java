@@ -1,4 +1,4 @@
-package sh.platform.template;
+package sh.platform.example.user.client;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

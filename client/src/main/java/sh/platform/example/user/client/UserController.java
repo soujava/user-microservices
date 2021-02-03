@@ -1,4 +1,4 @@
-package sh.platform.template;
+package sh.platform.example.user.client;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

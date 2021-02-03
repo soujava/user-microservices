@@ -1,4 +1,4 @@
-package sh.platform.template;
+package sh.platform.example.user.client;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

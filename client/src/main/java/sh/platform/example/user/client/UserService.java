@@ -29,9 +29,15 @@ public class UserService {
         return Arrays.asList(response.getBody());
     }
 
-    public void save(User user) {
+    public void insert(User user) {
         HttpEntity<User> request = new HttpEntity<>(user);
         template.postForObject(url, request, User.class);
+    }
+
+    public void update(String id, User user) {
+        HttpEntity<User> request = new HttpEntity<>(user);
+        template.put(url + "/" + id, request, User.class);
+
     }
 
     public Optional<User> findById(String id) {

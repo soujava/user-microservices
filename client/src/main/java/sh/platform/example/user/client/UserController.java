@@ -34,7 +34,7 @@ public class UserController {
             return "add-user";
         }
 
-        service.save(user);
+        service.insert(user);
         model.addAttribute("users", service.findAll());
         return "index";
     }
@@ -53,7 +53,7 @@ public class UserController {
             return "update-user";
         }
 
-        service.save(user);
+        service.update(id, user);
         model.addAttribute("users", service.findAll());
         return "index";
     }

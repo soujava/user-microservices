@@ -17,6 +17,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Logger;
 
 @Path("people")
 @ApplicationScoped
@@ -24,6 +25,7 @@ import java.util.Optional;
 @Consumes(MediaType.APPLICATION_JSON)
 public class PersonResource {
 
+    private static final Logger LOGGER = Logger.getLogger(PersonResource.class.getName());
     @GET
     public List<Person> get() {
         return Person.listAll(Sort.ascending("name"));
@@ -34,7 +36,7 @@ public class PersonResource {
     public Person getSingle(@PathParam Long id) {
 
         Optional<Person> entity = Person.findByIdOptional(id);
-        return entity.orElseThrow(() -> new WebApplicationException("Car with id of " + id + " does not exist.",
+        return entity.orElseThrow(() -> new WebApplicationException("Person with id of " + id + " does not exist.",
                 Response.Status.NOT_FOUND));
     }
 
@@ -49,12 +51,13 @@ public class PersonResource {
     @Path("{id}")
     @Transactional
     public Person update(@PathParam Long id, Person person) {
-
+        LOGGER.info("the parameters " + person);
+        LOGGER.info("the id " + id);
         Person entity = Person.<Person>findByIdOptional(id)
-                .orElseThrow(() -> new WebApplicationException("Car with id of " + id + " does not exist.",
+                .orElseThrow(() -> new WebApplicationException("Person with id of " + id + " does not exist.",
                         Response.Status.NOT_FOUND));
+        LOGGER.info("the entity found " + entity);
         entity.update(person);
-        entity.flush();
         return entity;
     }
 
@@ -66,7 +69,7 @@ public class PersonResource {
         if (deleted) {
             return Response.status(Response.Status.NO_CONTENT).build();
         }
-        throw new WebApplicationException("Car with id of " + id + " does not exist.", Response.Status.NOT_FOUND);
+        throw new WebApplicationException("Person with id of " + id + " does not exist.", Response.Status.NOT_FOUND);
     }
 
 }

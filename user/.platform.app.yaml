@@ -1,4 +1,4 @@
-name: app
+name: user
 type: "java:11"
 disk: 1024
 hooks:

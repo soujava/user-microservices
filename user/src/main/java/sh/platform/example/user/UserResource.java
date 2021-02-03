@@ -1,4 +1,4 @@
-package org.acme.hibernate.orm;
+package sh.platform.example.user;
 
 import io.quarkus.panache.common.Sort;
 import org.jboss.resteasy.annotations.jaxrs.PathParam;

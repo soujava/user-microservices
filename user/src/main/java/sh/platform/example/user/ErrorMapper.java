@@ -1,4 +1,4 @@
-package org.acme.hibernate.orm;
+package sh.platform.example.user;
 
 import org.jboss.logging.Logger;
 

@@ -1,12 +1,10 @@
-package org.acme.hibernate.orm;
+package sh.platform.example.user;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import java.util.Objects;
 
 @Entity
 public class User extends PanacheEntity {

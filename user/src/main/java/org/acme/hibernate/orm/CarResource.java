@@ -24,15 +24,15 @@ import java.util.List;
 public class CarResource {
 
     @GET
-    public List<Car> get() {
-        return Car.listAll(Sort.ascending("plate"));
+    public List<User> get() {
+        return User.listAll(Sort.ascending("plate"));
     }
 
     @GET
     @Path("{id}")
-    public Car getSingle(@PathParam Long id) {
+    public User getSingle(@PathParam Long id) {
 
-        Car entity = Car.findById(id);
+        User entity = User.findById(id);
         if (entity == null) {
             throw new WebApplicationException("Car with id of " + id + " does not exist.", 404);
         }
@@ -41,22 +41,22 @@ public class CarResource {
 
     @POST
     @Transactional
-    public Response create(Car car) {
-        car.persist();
-        return Response.ok(car).status(201).build();
+    public Response create(User user) {
+        user.persist();
+        return Response.ok(user).status(201).build();
     }
 
     @PUT
     @Path("{id}")
     @Transactional
-    public Car update(@PathParam Long id, Car car) {
+    public User update(@PathParam Long id, User user) {
 
-        Car entity = Car.findById(id);
+        User entity = User.findById(id);
         if (entity == null) {
             throw new WebApplicationException("Car with id of " + id + " does not exist.", 404);
         }
 
-        entity.setMake(car.getMake());
+        entity.setMake(user.getMake());
 
         return entity;
     }
@@ -65,7 +65,7 @@ public class CarResource {
     @Path("{id}")
     @Transactional
     public Response delete(@PathParam Long id) {
-        boolean deleted = Car.deleteById(id);
+        boolean deleted = User.deleteById(id);
         if (deleted) {
             return Response.status(204).build();
         }

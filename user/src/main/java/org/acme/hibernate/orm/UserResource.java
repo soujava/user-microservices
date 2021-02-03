@@ -16,6 +16,7 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
+import java.util.Optional;
 
 @Path("users")
 @ApplicationScoped
@@ -25,18 +26,16 @@ public class UserResource {
 
     @GET
     public List<User> get() {
-        return User.listAll(Sort.ascending("plate"));
+        return User.listAll(Sort.ascending("name"));
     }
 
     @GET
     @Path("{id}")
     public User getSingle(@PathParam Long id) {
 
-        User entity = User.findById(id);
-        if (entity == null) {
-            throw new WebApplicationException("Car with id of " + id + " does not exist.", 404);
-        }
-        return entity;
+        Optional<User> entity = User.findByIdOptional(id);
+        return entity.orElseThrow(() -> new WebApplicationException("Car with id of " + id + " does not exist.",
+                Response.Status.NOT_FOUND));
     }
 
     @POST
@@ -51,13 +50,11 @@ public class UserResource {
     @Transactional
     public User update(@PathParam Long id, User user) {
 
-        User entity = User.findById(id);
-        if (entity == null) {
-            throw new WebApplicationException("Car with id of " + id + " does not exist.", 404);
-        }
-
-        entity.setMake(user.getMake());
-
+        User entity = User.<User>findByIdOptional(id)
+                .orElseThrow(() -> new WebApplicationException("Car with id of " + id + " does not exist.",
+                        Response.Status.NOT_FOUND));
+        entity.update(user);
+        entity.flush();
         return entity;
     }
 
@@ -67,9 +64,9 @@ public class UserResource {
     public Response delete(@PathParam Long id) {
         boolean deleted = User.deleteById(id);
         if (deleted) {
-            return Response.status(204).build();
+            return Response.status(Response.Status.NO_CONTENT).build();
         }
-        throw new WebApplicationException("Car with id of " + id + " does not exist.", 404);
+        throw new WebApplicationException("Car with id of " + id + " does not exist.", Response.Status.NOT_FOUND);
     }
 
 }

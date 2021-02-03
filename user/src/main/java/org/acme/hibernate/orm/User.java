@@ -27,4 +27,9 @@ public class User extends PanacheEntity {
                 ", id=" + id +
                 '}';
     }
+
+    public void update(User user) {
+        this.name = user.name;
+        this.email = user.email;
+    }
 }

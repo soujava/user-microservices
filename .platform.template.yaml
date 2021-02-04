@@ -1,8 +1,8 @@
 version: 1
 
 info:
-  id: platformsh/quarkus
-  name: Quarkus
+  id: soujava/user-microservices
+  name: user-microservices
   description:
   tags:
     - Java

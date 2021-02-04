@@ -15,6 +15,8 @@
   disk: 1024
   hooks:
     build: mvn clean package
+  relationships:
+    service: "user:http"
   web:
     commands:
       start: java -jar $JAVA_OPTS target/client.jar --server.port=$PORT

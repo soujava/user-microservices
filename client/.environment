@@ -1,1 +1,2 @@
 export JAVA_OPTS="-Xmx$(jq .info.limits.memory /run/config.json)m -XX:+ExitOnOutOfMemoryError"
+export USER_URL=`echo $PLATFORM_RELATIONSHIPS|base64 -d|json_pp|jq -r ".service[0].host"`

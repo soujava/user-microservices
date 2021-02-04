@@ -12,6 +12,8 @@
       start: java -jar $JAVA_OPTS -Dquarkus.http.port=$PORT target/user-1.0-SNAPSHOT-runner.jar
 - name: app
   type: "java:11"
+  source:
+    root: client
   disk: 1024
   hooks:
     build: mvn clean package

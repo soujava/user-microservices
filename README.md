@@ -1,6 +1,9 @@
 # User sample microservices
 <a href="https://console.platform.sh/projects/create-project/?template=https://raw.githubusercontent.com/soujava/user-microservices/master/.platform.template.yaml&utm_campaign=deploy_on_platform?utm_medium=button&utm_source=affiliate_links&utm_content=https://raw.githubusercontent.com/soujava/user-microservices/master/.platform.template.yaml" target="_blank" title="Deploy with Platform.sh"><img src="https://platform.sh/images/deploy/deploy-button-lg-blue.svg"></a>
 
+A simple example with two applications:
+* The Quarkus one has a database connection with Panache and PostgreSQL.
+* The Spring MVC has the UI and consumes the Quarkus API.
 
 ## Services
 

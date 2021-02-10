@@ -1,7 +1,6 @@
 # User sample microservices
 <a href="https://console.platform.sh/projects/create-project/?template=https://raw.githubusercontent.com/soujava/user-microservices/master/.platform.template.yaml&utm_campaign=deploy_on_platform?utm_medium=button&utm_source=affiliate_links&utm_content=https://raw.githubusercontent.com/soujava/user-microservices/master/.platform.template.yaml" target="_blank" title="Deploy with Platform.sh"><img src="https://platform.sh/images/deploy/deploy-button-lg-blue.svg"></a>
 
-Quarkus, the Supersonic Subatomic Java, promises to deliver small artifacts, extremely fast boot time, and lower time-to-first-request. 
 
 ## Services
 

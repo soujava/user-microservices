@@ -7,7 +7,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-public class Person extends PanacheEntity {
+public class Member extends PanacheEntity {
 
     @NotBlank(message = "Name is mandatory")
     public String name;
@@ -16,6 +16,8 @@ public class Person extends PanacheEntity {
     @Email(message = "Email is not valid")
     public String email;
 
+    @NotBlank(message = "JUG is mandatory")
+    public String jug;
 
     @Override
     public String toString() {
@@ -26,8 +28,9 @@ public class Person extends PanacheEntity {
                 '}';
     }
 
-    public void update(Person person) {
-        this.name = person.name;
-        this.email = person.email;
+    public void update(Member member) {
+        this.name = member.name;
+        this.email = member.email;
+        this.jug = member.jug;
     }
 }

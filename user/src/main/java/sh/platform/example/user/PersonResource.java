@@ -27,37 +27,37 @@ public class PersonResource {
 
     private static final Logger LOGGER = Logger.getLogger(PersonResource.class.getName());
     @GET
-    public List<Person> get() {
-        return Person.listAll(Sort.ascending("name"));
+    public List<Member> get() {
+        return Member.listAll(Sort.ascending("name"));
     }
 
     @GET
     @Path("{id}")
-    public Person getSingle(@PathParam Long id) {
+    public Member getSingle(@PathParam Long id) {
 
-        Optional<Person> entity = Person.findByIdOptional(id);
+        Optional<Member> entity = Member.findByIdOptional(id);
         return entity.orElseThrow(() -> new WebApplicationException("Person with id of " + id + " does not exist.",
                 Response.Status.NOT_FOUND));
     }
 
     @POST
     @Transactional
-    public Response create(Person person) {
-        person.persist();
-        return Response.ok(person).status(201).build();
+    public Response create(Member member) {
+        member.persist();
+        return Response.ok(member).status(201).build();
     }
 
     @PUT
     @Path("{id}")
     @Transactional
-    public Person update(@PathParam Long id, Person person) {
-        LOGGER.info("the parameters " + person);
+    public Member update(@PathParam Long id, Member member) {
+        LOGGER.info("the parameters " + member);
         LOGGER.info("the id " + id);
-        Person entity = Person.<Person>findByIdOptional(id)
+        Member entity = Member.<Member>findByIdOptional(id)
                 .orElseThrow(() -> new WebApplicationException("Person with id of " + id + " does not exist.",
                         Response.Status.NOT_FOUND));
         LOGGER.info("the entity found " + entity);
-        entity.update(person);
+        entity.update(member);
         return entity;
     }
 
@@ -65,7 +65,7 @@ public class PersonResource {
     @Path("{id}")
     @Transactional
     public Response delete(@PathParam Long id) {
-        boolean deleted = Person.deleteById(id);
+        boolean deleted = Member.deleteById(id);
         if (deleted) {
             return Response.status(Response.Status.NO_CONTENT).build();
         }

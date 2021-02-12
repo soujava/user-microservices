@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Update User</title>
+    <title>Update JUG Member</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
@@ -26,10 +26,15 @@
                         <input type="text" th:field="*{email}" class="form-control" id="email" placeholder="Email">
                         <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></span>
                     </div>
+                    <div class="form-group col-md-6">
+                        <label for="email" class="col-form-label">JUG</label>
+                        <input type="text" th:field="*{jug}" class="form-control" id="jug" placeholder="JUG">
+                        <span th:if="${#fields.hasErrors('jug')}" th:errors="*{jug}" class="text-danger"></span>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6 mt-5">
-                        <input type="submit" class="btn btn-primary" value="Update User">
+                        <input type="submit" class="btn btn-primary" value="Update JUG Member">
                     </div>
                 </div>
             </form>

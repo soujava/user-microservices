@@ -19,12 +19,16 @@ public class Member extends PanacheEntity {
     @NotBlank(message = "JUG is mandatory")
     public String jug;
 
+    @NotBlank(message = "Country is mandatory")
+    public String country;
+
     @Override
     public String toString() {
-        return "User{" +
+        return "Member{" +
                 "name='" + name + '\'' +
                 ", email='" + email + '\'' +
-                ", id=" + id +
+                ", jug='" + jug + '\'' +
+                ", country='" + country + '\'' +
                 '}';
     }
 
@@ -32,5 +36,6 @@ public class Member extends PanacheEntity {
         this.name = member.name;
         this.email = member.email;
         this.jug = member.jug;
+        this.country = member.country;
     }
 }

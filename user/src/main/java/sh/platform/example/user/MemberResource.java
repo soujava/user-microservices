@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.logging.Logger;
 
-@Path("people")
+@Path("members")
 @ApplicationScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)

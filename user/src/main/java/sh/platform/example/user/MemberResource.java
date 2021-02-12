@@ -23,9 +23,9 @@ import java.util.logging.Logger;
 @ApplicationScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class PersonResource {
+public class MemberResource {
 
-    private static final Logger LOGGER = Logger.getLogger(PersonResource.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(MemberResource.class.getName());
     @GET
     public List<Member> get() {
         return Member.listAll(Sort.ascending("name"));
@@ -36,7 +36,7 @@ public class PersonResource {
     public Member getSingle(@PathParam Long id) {
 
         Optional<Member> entity = Member.findByIdOptional(id);
-        return entity.orElseThrow(() -> new WebApplicationException("Person with id of " + id + " does not exist.",
+        return entity.orElseThrow(() -> new WebApplicationException("Member with id of " + id + " does not exist.",
                 Response.Status.NOT_FOUND));
     }
 
@@ -54,7 +54,7 @@ public class PersonResource {
         LOGGER.info("the parameters " + member);
         LOGGER.info("the id " + id);
         Member entity = Member.<Member>findByIdOptional(id)
-                .orElseThrow(() -> new WebApplicationException("Person with id of " + id + " does not exist.",
+                .orElseThrow(() -> new WebApplicationException("Member with id of " + id + " does not exist.",
                         Response.Status.NOT_FOUND));
         LOGGER.info("the entity found " + entity);
         entity.update(member);
@@ -69,7 +69,7 @@ public class PersonResource {
         if (deleted) {
             return Response.status(Response.Status.NO_CONTENT).build();
         }
-        throw new WebApplicationException("Person with id of " + id + " does not exist.", Response.Status.NOT_FOUND);
+        throw new WebApplicationException("Member with id of " + id + " does not exist.", Response.Status.NOT_FOUND);
     }
 
 }

@@ -1,4 +1,4 @@
 export JAVA_OPTS="-Xmx$(jq .info.limits.memory /run/config.json)m -XX:+ExitOnOutOfMemoryError"
 export USER_HOST=`echo $PLATFORM_RELATIONSHIPS|base64 -d|json_pp|jq -r ".service[0].host"`
 export USER_PORT=`echo $PLATFORM_RELATIONSHIPS|base64 -d|json_pp|jq -r ".service[0].port"`
-export USER_URL="http://${USER_HOST}:${USER_PORT}/people"
+export USER_URL="http://${USER_HOST}:${USER_PORT}/members"

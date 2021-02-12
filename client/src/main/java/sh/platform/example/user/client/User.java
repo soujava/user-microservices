@@ -22,6 +22,9 @@ public class User {
     @NotBlank(message = "JUG is mandatory")
     private String jug;
 
+    @NotBlank(message = "Country is mandatory")
+    private String country;
+
     public String getId() {
         return id;
     }
@@ -52,6 +55,14 @@ public class User {
 
     public void setJug(String jug) {
         this.jug = jug;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     @Override
